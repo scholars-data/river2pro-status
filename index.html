@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>River2Pro Status</title>
+  <style>
+    html,body{margin:0;padding:0;background:#111;color:#eee;font-family:system-ui;}
+    .wrap{max-width:1200px;margin:0 auto;padding:12px;}
+    img{width:100%;height:auto;border-radius:8px;border:1px solid #333;}
+    .meta{margin-top:8px;font-size:14px;opacity:.85}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h2>River2Pro ステータス（1分更新）</h2>
+    <img id="shot" src="latest.png" alt="latest" />
+    <div class="meta" id="ts"></div>
+  </div>
+
+  <script>
+    function refresh(){
+      const t = Date.now(); // キャッシュ回避
+      document.getElementById('shot').src = 'latest.png?t=' + t;
+      document.getElementById('ts').textContent = 'Last refresh: ' + new Date().toLocaleString();
+    }
+    refresh();
+    setInterval(refresh, 60*1000);
+  </script>
+</body>
+</html>
